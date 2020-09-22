@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.doubanio.com/simple/"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "*"
+djangorestframework = "*"
+paramiko = "*"
+pymysql = "*"
+requests = "*"
+gunicorn = "*"
+gevent = "*"
+greenlet = "*"
+oss2 = "*"
+mysqlclient = "*"
+ibm-db = "*"
+
+[requires]
+python_version = "3.7"

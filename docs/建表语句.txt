@@ -1,0 +1,90 @@
+DDL：
+
+create table manto.manto_schedule_config
+(
+	id int auto_increment
+		primary key,
+	case_id longtext not null,
+	batch_group_name varchar(255) not null,
+	batch_group_desc longtext not null,
+	pacakge_name varchar(255) not null,
+	batch_job_name varchar(255) not null,
+	batch_job_desc longtext not null,
+	batch_job_param varchar(255) not null,
+	priority bigint not null,
+	clean_table longtext not null,
+	ready_table longtext not null,
+	assert_table longtext not null,
+	gmt_created datetime(6) not null,
+	gmt_modified datetime(6) not null,
+	constraint manto_schedule_config_batch_group_name_pacakge_4733c749_uniq
+		unique (batch_group_name, pacakge_name, batch_job_name, batch_job_param)
+);
+
+create index sc_idx
+	on manto.manto_schedule_config (batch_job_name);
+
+create table manto.manto_schedule_dispatch_detail
+(
+	id int auto_increment
+		primary key,
+	dispatch_no varchar(255) not null,
+	schedule_config_id bigint not null,
+	is_clean tinyint(1) not null,
+	is_ready tinyint(1) not null,
+	is_assert tinyint(1) not null,
+	gmt_created datetime(6) not null,
+	gmt_modified datetime(6) not null,
+	constraint manto_schedule_dispatch__dispatch_no_schedule_con_6bac050e_uniq
+		unique (dispatch_no, schedule_config_id)
+);
+
+create index sdd_idx
+	on manto.manto_schedule_dispatch_detail (dispatch_no, schedule_config_id);
+
+create table manto.manto_schedule_dispatch_list
+(
+	id int auto_increment
+		primary key,
+	dispatch_no varchar(255) not null,
+	is_done tinyint(1) not null,
+	gmt_created datetime(6) not null,
+	gmt_modified datetime(6) not null,
+	constraint dispatch_no
+		unique (dispatch_no)
+);
+
+create index sdl_idx
+	on manto.manto_schedule_dispatch_list (dispatch_no);
+
+create table manto.manto_schedule_result
+(
+	id int auto_increment
+		primary key,
+	dispatch_no varchar(255) not null,
+	schedule_config_id bigint not null,
+	result_info longtext not null,
+	status tinyint(1) not null,
+	gmt_created datetime(6) not null,
+	gmt_modified datetime(6) not null
+);
+
+create index sr_idx
+	on manto.manto_schedule_result (dispatch_no);
+
+create table manto.manto_schedule_sequence
+(
+	id int auto_increment
+		primary key,
+	seq_no bigint not null,
+	gmt_created datetime(6) not null,
+	gmt_modified datetime(6) not null
+);
+
+
+
+
+
+
+DML：
+INSERT INTO manto_schedule_sequence (id, seq_no, gmt_created, gmt_modified) VALUES (1, 1, '2020-07-07 11:54:01.817536', '2020-07-07 11:54:01.817536');

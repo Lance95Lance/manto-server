@@ -1,0 +1,88 @@
+{
+    "batch_group_name": "JAADDN001",
+    "batch_group_desc": "理赔入库组",
+    "job": [
+        {
+            "priority": 0,
+            "pacakge_name": "com.tai.ad.r0.batch",
+            "batch_job_name": "ADR0_8010",
+            "batch_job_desc": "理赔数据准备第一步",
+            "batch_job_param": "1 2 3",
+            "batch_data": {
+                "clean": {
+                    "table": [
+                        "CXLKA.DTKA0270"
+                    ]
+                },
+                "ready": {
+                    "table": [
+                        {
+                            "name": "CXLKA.TCDTKA0270",
+                            "tag": "nav"
+                        }
+                    ]
+                },
+                "assert": {
+                    "table": [
+                        {
+                            "name": "CXLKA.ARDTKA0270",
+                            "tag": "nav",
+                            "order": "CUSTOMER_NUMBER",
+                            "eliminate": [
+                                "PACKAGE",
+                                "DESC"
+                            ]
+                        },
+                        {
+                            "name": "CXLKA.ARDTKA0270",
+                            "tag": "",
+                            "order": "",
+                            "eliminate": []
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "priority": 1,
+            "pacakge_name": "com.tai.ad.r1.batch",
+            "batch_job_name": "ADR0_8011",
+            "batch_job_desc": "理赔数据准备第二步",
+            "batch_job_param": "3",
+            "batch_data": {
+                "clean": {
+                    "table": [
+                        "CXLKA.DTKA0270"
+                    ]
+                },
+                "ready": {
+                    "table": [
+                        {
+                            "name": "CXLKA.TCDTKA0270",
+                            "tag": "nav"
+                        }
+                    ]
+                },
+                "assert": {
+                    "table": [
+                        {
+                            "name": "CXLKA.ARDTKA0270",
+                            "tag": "nav",
+                            "order": "CUSTOMER_NUMBER",
+                            "eliminate": [
+                                "PACKAGE",
+                                "DESC"
+                            ]
+                        },
+                        {
+                            "name": "CXLKA.ARDTKA0270",
+                            "tag": "",
+                            "order": "",
+                            "eliminate": []
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
