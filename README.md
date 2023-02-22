@@ -40,7 +40,7 @@ flow_control
 
 -第二个方法：进入run_batch
 这里目前待完善，就是调个os的库进行shell命令的执行即可，根据设定拼成如下shell命令：
-/home/cxlcs/runbatch.sh JAABDBY20 com.cathay.ab.y2.batch.ABY2_0150
+/home/areaName/runbatch.sh GAABDXXXX com.xxx.xx.xxxxx.xxxx.xxxx_xxx
 
 -第三个方法：进入assert_data
 捞取任务明细表全部待验证的数据,查询对应case_id的验证设定,根据设定把db2的验证表与原始表
